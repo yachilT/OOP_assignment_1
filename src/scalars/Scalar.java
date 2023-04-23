@@ -4,9 +4,9 @@ public interface Scalar {
     public Scalar add(Scalar s);
     public Scalar add(IntegerScalar i);
     public Scalar add(RationalScalar r);
-    public Scalar mult(Scalar s);
-    public Scalar mult(IntegerScalar s);
-    public Scalar mult(RationalScalar r);
+    public Scalar mul(Scalar s);
+    public Scalar mul(IntegerScalar s);
+    public Scalar mul(RationalScalar r);
 
     public Scalar neg();
 

@@ -9,9 +9,6 @@ public class IntegerScalar implements Scalar {
         this.number = Integer.parseInt(str);
     }
 
-    public int getNumber() {
-        return this.number;
-    }
     public Scalar add(Scalar s) {
         return s.add(this);
     }
@@ -21,19 +18,19 @@ public class IntegerScalar implements Scalar {
     }
 
     public Scalar add(RationalScalar r) {
-        return null;
+        return r.add(this);
     }
 
-    public Scalar mult(Scalar s) {
-       return s.mult(this);
+    public Scalar mul(Scalar s) {
+       return s.mul(this);
     }
 
-    public Scalar mult(IntegerScalar s) {
-        return new IntegerScalar(this.number + s.number);
+    public Scalar mul(IntegerScalar s) {
+        return new IntegerScalar(this.number * s.number);
     }
 
-    public Scalar mult(RationalScalar r) {
-        return null;
+    public Scalar mul(RationalScalar r) {
+        return r.mul(this);
     }
 
     public Scalar neg() {
@@ -43,7 +40,7 @@ public class IntegerScalar implements Scalar {
     public Scalar power(int exponent) {
         Scalar powered = new IntegerScalar(1);
         for (int i = 0; i < exponent; i++) {
-            powered = this.mult(powered);
+            powered = this.mul(powered);
         }
         return powered;
     }
@@ -56,6 +53,9 @@ public class IntegerScalar implements Scalar {
         return 0;
     }
 
+    public int getInt() {
+        return this.number;
+    }
     public double getValue() {
         return number;
     }

@@ -4,7 +4,7 @@ public class RationalScalar implements Scalar{
     private int numerator;
     private int denominator;
     public RationalScalar(int numerator, int denominator) {
-        if (denominator > 0) {
+        if (denominator < 0) {
             numerator = -numerator;
             denominator = -denominator;
         }
@@ -15,8 +15,8 @@ public class RationalScalar implements Scalar{
     }
 
     public RationalScalar(String str) {
-        this(new IntegerScalar(str.split("/")[0]).getNumber(),
-                new IntegerScalar(str.split("/")[1]).getNumber());
+        this(new IntegerScalar(str.split("/")[0]).getInt(),
+                new IntegerScalar(str.split("/")[1]).getInt());
     }
     private int gcd(int n1, int n2) {
         n1 = n1 < 0 ? -n1: n1;
@@ -36,7 +36,7 @@ public class RationalScalar implements Scalar{
     }
 
     public Scalar add(IntegerScalar i) {
-        return this.add(new RationalScalar(i.getNumber(), 1));
+        return this.add(new RationalScalar(i.getInt(), 1));
     }
 
     public Scalar add(RationalScalar r) {
@@ -44,17 +44,17 @@ public class RationalScalar implements Scalar{
                 this.denominator * r.denominator).reduce();
     }
 
-    public Scalar mult(Scalar s) {
-        return s.mult(this);
+    public Scalar mul(Scalar s) {
+        return s.mul(this);
     }
 
-    public Scalar mult(IntegerScalar s) {
-        return this.mult(new RationalScalar(s.getNumber(), 1));
+    public Scalar mul(IntegerScalar s) {
+        return this.mul(new RationalScalar(s.getInt(), 1));
     }
 
-    public Scalar mult(RationalScalar r) {
+    public Scalar mul(RationalScalar r) {
         return new RationalScalar(this.numerator * r.numerator,
-                this.denominator * r.denominator).reduce();
+                this.denominator * r.denominator);
     }
 
     public Scalar neg() {
@@ -64,7 +64,7 @@ public class RationalScalar implements Scalar{
     public Scalar power(int exponent) {
         Scalar powered = new RationalScalar(1, 1);
         for (int i = 0; i < exponent; i++) {
-            powered = this.mult(powered);
+            powered = this.mul(powered);
         }
         return powered;
     }
@@ -89,6 +89,6 @@ public class RationalScalar implements Scalar{
         return false;
     }
     public String toString(){
-        return numerator + "/" + denominator;
+        return denominator == 1 ? numerator + "" : numerator + "/" + denominator;
     }
 }

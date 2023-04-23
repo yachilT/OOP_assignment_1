@@ -38,7 +38,7 @@ public class Polynomial {
         monomialList.addAll(this.monomials.values());
         return new Polynomial(monomialList);
     }
-    public Polynomial mult(Polynomial p){
+    public Polynomial mul(Polynomial p){
         List<Monomial> monomialList = new LinkedList<>();
         for(Monomial m1: this.monomials.values())
             for(Monomial m2: p.monomials.values())
