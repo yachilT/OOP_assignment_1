@@ -12,11 +12,14 @@ public class Polynomial {
     private TreeMap<Integer,Monomial>  monomials;
     public Polynomial(){};
     public Polynomial(List<Monomial> monomialList){
+        Scalar zero = new IntegerScalar(0);
         monomials = new TreeMap<>();
-        for(Monomial m: monomialList){
-            int exponent = m.getExponent();
-            Monomial mono = monomials.getOrDefault(exponent, new Monomial(exponent, new IntegerScalar(0)));
-            monomials.put(exponent, mono.add(m));
+        for(Monomial m: monomialList) {
+            if (!m.getCoefficient().equals(zero)) {
+                int exponent = m.getExponent();
+                Monomial mono = monomials.getOrDefault(exponent, new Monomial(exponent, zero));
+                monomials.put(exponent, mono.add(m));
+            }
         }
     }
     public static Polynomial build(String input){
@@ -66,7 +69,7 @@ public class Polynomial {
     public String toString(){
         String output = "";
         for(Monomial m: this.monomials.values())
-            output = output + " +" + m.toString();
-       return output.replaceAll("-","+-");
+            output = output + " + " + m.toString();
+       return output.replaceAll("-+","-").substring(3);
     }
 }

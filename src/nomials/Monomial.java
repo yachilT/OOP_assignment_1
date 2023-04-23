@@ -29,14 +29,16 @@ public class Monomial {
     public String toString(){
         Scalar one = new IntegerScalar(1);
         Scalar zero = new IntegerScalar(0);
+        String output = "";
         if(this.coefficient.equals(zero))
-            return "0";
+            output = "0";
         else if(this.exponent == 0)
-            return this.coefficient.toString();
+            output = this.coefficient.toString();
         else if(this.coefficient.equals(one))
-            return "x^"+this.exponent;
+            output = "x^"+this.exponent;
         else
-            return this.coefficient.toString() + '*' + "x^"+this.exponent;
+            output = this.coefficient.toString() + '*' + "x^"+this.exponent;
+        return output.replaceAll("\\^1","");
     }
     public int getExponent() {
         return exponent;
