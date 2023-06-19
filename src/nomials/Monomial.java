@@ -3,7 +3,7 @@ import scalars.*;
 
 public class Monomial {
     private int exponent;
-    private scalars.Scalar coefficient;
+    private Scalar coefficient;
     public Monomial(int exponent, Scalar coefficient){
         this.coefficient = coefficient;
         this.exponent = exponent;
@@ -37,7 +37,7 @@ public class Monomial {
         else if(this.coefficient.equals(one))
             output = "x^"+this.exponent;
         else
-            output = this.coefficient.toString() + '*' + "x^"+this.exponent;
+            output = this.coefficient.toString() + "x^"+this.exponent;
         return output.replaceAll("\\^1","");
     }
     public int getExponent() {

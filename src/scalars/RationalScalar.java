@@ -88,10 +88,10 @@ public class RationalScalar implements Scalar{
             return ((Scalar)o).getValue() == getValue();
         return false;
     }
-    public int getNumerator(){
+    public int getNumerator() {
         return numerator;
     }
-    public int getDenominator(){
+    public int getDenominator() {
         return denominator;
     }
     public String toString(){

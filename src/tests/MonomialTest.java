@@ -85,7 +85,7 @@ class MonomialTest {
     @Test
     void testToString() {
         System.out.print("toString: ");
-        if (this.monomial.toString().equals("3/4*x^3"))
+        if (this.monomial.toString().equals("3/4x^3"))
             System.out.println("Success!");
         else
             System.out.println("Failed!");

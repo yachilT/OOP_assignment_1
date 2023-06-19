@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.TreeMap;
 
 public class Polynomial {
-    private TreeMap<Integer,Monomial>  monomials;
+    private TreeMap<Integer, Monomial>  monomials;
     public Polynomial(){};
     public Polynomial(List<Monomial> monomialList){
         Scalar zero = new IntegerScalar(0);

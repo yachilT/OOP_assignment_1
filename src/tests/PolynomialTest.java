@@ -83,7 +83,7 @@ class PolynomialTest {
     @Test
     void testToString() {
         System.out.println("Tests toString:");
-        if(polynomialT.toString().equals("1 + 2*x + 3*x^2"))
+        if(polynomialT.toString().equals("1 + 2x + 3x^2"))
             System.out.println("Test succeeded");
         else
             System.out.println("Test failed");
